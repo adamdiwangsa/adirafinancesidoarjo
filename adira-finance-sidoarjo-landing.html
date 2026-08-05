@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>ADIRA FINANCE Sidoarjo — Solusi Pembiayaan Terpercaya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --maroon: #7E1C34;
+    --maroon-dark: #55101F;
+    --maroon-tint: #F6E9EC;
+    --ivory: #FAF6F0;
+    --ivory-deep: #F1E7DA;
+    --charcoal: #241E1C;
+    --charcoal-soft: #5B534E;
+    --gold: #B08A4E;
+    --gold-soft: #E8D9BC;
+    --white: #FFFFFF;
+    --line: rgba(36,30,28,0.12);
+    --shadow: 0 20px 45px -25px rgba(36,20,20,0.45);
+    --radius: 18px;
+    --maxw: 1180px;
+  }
+
+  *,*::before,*::after{ box-sizing: border-box; }
+  html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+  body{
+    margin:0;
+    overflow-x:hidden;
+    background: var(--ivory);
+    color: var(--charcoal);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  h1,h2,h3,h4{ font-family:'Fraunces', serif; font-weight:600; margin:0; line-height:1.15; letter-spacing:-0.01em; }
+  p{ margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ margin:0; padding:0; list-style:none; }
+  button{ font-family:inherit; cursor:pointer; }
+  .container{ max-width: var(--maxw); margin:0 auto; padding:0 24px; }
+  .section{ padding: clamp(56px, 9vw, 108px) 0; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; letter-spacing:0.16em; text-transform:uppercase;
+    color: var(--maroon); font-weight:500; display:inline-flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{ content:''; width:22px; height:1px; background:var(--maroon); display:inline-block; }
+  .section-head{ max-width: 640px; margin-bottom: 44px; }
+  .section-title{ font-size: clamp(1.7rem, 1.3rem + 1.6vw, 2.5rem); margin-top:12px; }
+  .section-desc{ margin-top:14px; color:var(--charcoal-soft); font-size:1.02rem; max-width:56ch; }
+  .center{ text-align:center; margin-left:auto; margin-right:auto; }
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{ opacity:0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.is-visible{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    padding:14px 26px; border-radius:999px; font-weight:600; font-size:0.95rem;
+    border:1px solid transparent; transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    white-space:nowrap;
+  }
+  .btn svg{ width:18px; height:18px; flex:none; }
+  .btn-primary{ background: var(--maroon); color:var(--white); box-shadow: 0 14px 30px -14px rgba(126,28,52,0.65); }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 18px 36px -14px rgba(126,28,52,0.75); }
+  .btn-ghost{ background: transparent; border-color: rgba(36,30,28,0.25); color: var(--charcoal); }
+  .btn-ghost:hover{ border-color: var(--charcoal); transform: translateY(-2px); }
+  .btn-light{ background: var(--white); color: var(--maroon); }
+  .btn-light:hover{ transform: translateY(-2px); }
+  .btn-sm{ padding:9px 16px; font-size:0.82rem; }
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position: sticky; top:0; z-index:40; background: rgba(250,246,240,0.92); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-row{ display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:var(--maxw); margin:0 auto; }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; letter-spacing:0.01em; }
+  .brand-mark{ width:34px; height:34px; border-radius:9px; background: linear-gradient(155deg, var(--maroon), var(--maroon-dark)); display:flex; align-items:center; justify-content:center; color:var(--gold-soft); font-family:'Fraunces',serif; font-weight:700; font-size:15px; flex:none; }
+  .brand small{ display:block; font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:10.5px; letter-spacing:0.1em; color:var(--charcoal-soft); text-transform:uppercase; margin-top:1px; }
+  .nav-links{ display:flex; align-items:center; gap:30px; }
+  .nav-links a{ font-size:0.92rem; font-weight:500; color:var(--charcoal-soft); transition:color .15s ease; }
+  .nav-links a:hover{ color:var(--maroon); }
+  .nav-right{ display:flex; align-items:center; gap:14px; }
+  .nav-toggle{ display:none; background:none; border:none; padding:8px; }
+  .nav-toggle svg{ width:24px; height:24px; }
+  .nav-mobile{ display:none; flex-direction:column; gap:2px; padding: 4px 24px 18px; border-top:1px solid var(--line); }
+  .nav-mobile a{ padding:12px 4px; font-size:0.98rem; font-weight:500; border-bottom:1px solid var(--line); color:var(--charcoal); }
+  .nav-mobile.open{ display:flex; }
+
+  @media (max-width: 860px){
+    .nav-links{ display:none; }
+    .nav-right .btn-primary span{ display:none; }
+    .nav-toggle{ display:inline-flex; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; padding: clamp(52px,9vw,96px) 0 clamp(40px,6vw,72px);
+    background:
+      repeating-linear-gradient(to bottom, transparent 0 39px, rgba(126,28,52,0.05) 39px 40px),
+      linear-gradient(180deg, var(--ivory), var(--ivory) 70%, var(--ivory-deep));
+    overflow:hidden;
+  }
+  .hero::after{
+    content:''; position:absolute; right:-120px; top:-120px; width:420px; height:420px; border-radius:50%;
+    background: radial-gradient(circle, rgba(176,138,78,0.18), transparent 68%); pointer-events:none;
+  }
+  .hero-grid{ position:relative; display:grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items:center; }
+  .hero-title{ font-size: clamp(2.1rem, 1.5rem + 3vw, 3.5rem); margin-top:16px; color:var(--maroon-dark); }
+  .hero-title em{ font-style:italic; color:var(--maroon); }
+  .hero-sub{ margin-top:20px; font-size:1.08rem; color:var(--charcoal-soft); max-width: 46ch; }
+  .hero-cta{ margin-top:32px; display:flex; flex-wrap:wrap; gap:14px; }
+  .hero-stats{ display:flex; gap:28px; margin-top:40px; flex-wrap:wrap; }
+  .hero-stat b{ display:block; font-family:'Fraunces',serif; font-size:1.5rem; color:var(--maroon); }
+  .hero-stat span{ font-size:0.8rem; color:var(--charcoal-soft); }
+
+  .hero-card{
+    position:relative; border-radius: 22px; padding:14px; background: var(--white);
+    box-shadow: var(--shadow); border:1px solid var(--line);
+  }
+  .hero-card .ph-wrap{ border-radius:16px; aspect-ratio: 4/4.6; }
+  .hero-ribbon{
+    position:absolute; top:26px; left:-10px; background: var(--maroon); color:var(--gold-soft);
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; padding:7px 14px 7px 18px;
+    border-radius: 0 6px 6px 0; box-shadow: var(--shadow); z-index:2;
+  }
+  .hero-ribbon::before{ content:''; position:absolute; left:0; bottom:-8px; border-width:8px 0 0 10px; border-style:solid; border-color:transparent transparent transparent var(--maroon-dark); }
+
+  @media (max-width: 900px){
+    .hero-grid{ grid-template-columns:1fr; gap:36px; }
+    .hero-card{ max-width:340px; margin:0 auto; }
+  }
+
+  /* ---------- Photo wrap (shared) ---------- */
+  .ph-wrap{ position:relative; overflow:hidden; background:var(--ivory-deep); border-radius:14px; }
+  .ph-wrap img{ width:100%; height:100%; object-fit:cover; }
+  .ph-edit-btn{
+    display:none; position:absolute; inset:0; width:100%; height:100%; align-items:center; justify-content:center;
+    flex-direction:column; gap:8px; background: rgba(36,20,20,0.55); color:#fff; border:none;
+    font-family:'Inter',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:0.02em;
+  }
+  .ph-edit-btn svg{ width:22px; height:22px; }
+  body.edit-mode .ph-edit-btn{ display:flex; }
+  body.edit-mode .ph-wrap{ outline: 2px dashed rgba(176,138,78,0.7); outline-offset:2px; }
+
+  /* editable text outline */
+  body.edit-mode [data-editable="true"]{
+    outline: 1.5px dashed rgba(126,28,52,0.35); outline-offset:4px; border-radius:4px; cursor:text;
+  }
+  body.edit-mode [data-editable="true"]:focus{ outline: 1.5px dashed var(--maroon); background: rgba(176,138,78,0.08); }
+
+  /* ---------- Ribbon card (signature element) ---------- */
+  .amanah-card{
+    position:relative; background:var(--white); border-radius: var(--radius); border:1px solid var(--line);
+    box-shadow: var(--shadow); padding: 22px; overflow:hidden;
+  }
+  .amanah-card::before{
+    content:''; position:absolute; top:0; right:0; width:0; height:0;
+    border-style:solid; border-width:0 46px 46px 0; border-color: transparent var(--gold) transparent transparent;
+  }
+  .amanah-card::after{
+    content:'✓'; position:absolute; top:6px; right:6px; color:var(--maroon-dark); font-size:12px; font-weight:700;
+  }
+
+  /* ---------- Sambutan ---------- */
+  .sambutan-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:28px; }
+  .sambutan-card{ display:flex; gap:20px; }
+  .sambutan-card .ph-wrap{ width:104px; height:104px; border-radius:50%; flex:none; }
+  .sambutan-card .ph-wrap img{ border-radius:50%; }
+  .sambutan-name{ font-family:'Fraunces',serif; font-size:1.05rem; font-weight:600; }
+  .sambutan-role{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.06em; color:var(--maroon); text-transform:uppercase; margin-top:2px; }
+  .sambutan-quote{ margin-top:12px; color:var(--charcoal-soft); font-size:0.95rem; white-space:pre-line; }
+  .sambutan-quote::before{ content:'“'; font-family:'Fraunces',serif; color:var(--gold); font-size:1.3rem; margin-right:2px; }
+  @media (max-width: 820px){ .sambutan-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Produk ---------- */
+  .produk-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:26px; }
+  .produk-card{ background:var(--white); border-radius: var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow: var(--shadow); }
+  .produk-card .ph-wrap{ aspect-ratio: 16/10; border-radius:0; }
+  .produk-body{ padding:24px; }
+  .produk-body h3{ font-size:1.3rem; color:var(--maroon-dark); }
+  .produk-body p{ margin-top:10px; color:var(--charcoal-soft); font-size:0.95rem; }
+  @media (max-width: 700px){ .produk-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Keunggulan ---------- */
+  .keunggulan-band{ background: linear-gradient(155deg, var(--maroon), var(--maroon-dark)); color: var(--ivory); }
+  .keunggulan-band .eyebrow{ color: var(--gold-soft); }
+  .keunggulan-band .eyebrow::before{ background:var(--gold-soft); }
+  .keunggulan-band .section-desc{ color: rgba(250,246,240,0.75); }
+  .adv-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:22px; }
+  .adv-card{ background: rgba(250,246,240,0.06); border:1px solid rgba(250,246,240,0.18); border-radius: var(--radius); padding:26px; }
+  .adv-icon{ width:44px; height:44px; border-radius:12px; background: rgba(232,217,188,0.16); display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
+  .adv-icon svg{ width:22px; height:22px; color: var(--gold-soft); }
+  .adv-card h3{ font-size:1.12rem; color:var(--ivory); }
+  .adv-card p{ margin-top:8px; font-size:0.92rem; color: rgba(250,246,240,0.72); }
+  @media (max-width: 780px){ .adv-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Syarat ---------- */
+  .syarat-wrap{ display:grid; grid-template-columns: 0.9fr 1.1fr; gap:44px; align-items:start; }
+  .syarat-list{ display:flex; flex-direction:column; gap:14px; }
+  .syarat-item{ display:flex; gap:14px; align-items:flex-start; background:var(--white); border:1px solid var(--line); border-radius:14px; padding:16px 18px; }
+  .syarat-item svg{ width:20px; height:20px; color:var(--maroon); flex:none; margin-top:2px; }
+  .syarat-note{ margin-top:16px; font-size:0.85rem; color:var(--charcoal-soft); font-style:italic; }
+  .syarat-aside{ background: var(--maroon-tint); border-radius: var(--radius); padding:30px; }
+  .syarat-aside h3{ font-size:1.25rem; color:var(--maroon-dark); }
+  .syarat-aside p{ margin-top:12px; color: var(--charcoal-soft); font-size:0.95rem; }
+  .syarat-aside .btn{ margin-top:20px; }
+  @media (max-width: 820px){ .syarat-wrap{ grid-template-columns:1fr; } }
+
+  /* ---------- Tim ---------- */
+  .tim-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:24px; }
+  .tim-card{ text-align:center; padding-bottom:20px; }
+  .tim-card .ph-wrap{ aspect-ratio: 3/3.4; border-radius: var(--radius) var(--radius) 0 0; }
+  .tim-card-body{ padding:18px 16px 0; position:relative; }
+  .tim-name{ font-family:'Fraunces',serif; font-size:1.08rem; font-weight:600; }
+  .tim-role{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.05em; text-transform:uppercase; color:var(--maroon); margin-top:3px; }
+  .tim-card .btn{ margin-top:14px; }
+  .tim-remove{
+    display:none; position:absolute; top:-40px; right:6px; width:28px; height:28px; border-radius:50%;
+    background: var(--maroon); color:#fff; border:2px solid var(--white); align-items:center; justify-content:center;
+  }
+  .tim-remove svg{ width:14px; height:14px; }
+  body.edit-mode .tim-remove{ display:flex; }
+  .tim-add{
+    border: 1.5px dashed rgba(126,28,52,0.35); border-radius: var(--radius); display:none; flex-direction:column; align-items:center;
+    justify-content:center; gap:10px; min-height: 260px; color:var(--maroon); background: rgba(126,28,52,0.03);
+  }
+  .tim-add svg{ width:26px; height:26px; }
+  body.edit-mode .tim-add{ display:flex; cursor:pointer; }
+  @media (max-width: 900px){ .tim-grid{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 560px){ .tim-grid{ grid-template-columns: 1fr 1fr; gap:16px; } .tim-card .btn span{display:none;} }
+
+  /* ---------- Lokasi ---------- */
+  .lokasi-wrap{ display:grid; grid-template-columns: 1.3fr 1fr; gap:28px; align-items:stretch; }
+  .map-frame{ border-radius: var(--radius); overflow:hidden; border:1px solid var(--line); box-shadow: var(--shadow); aspect-ratio: 4/3; }
+  .map-frame iframe{ width:100%; height:100%; border:0; }
+  .lokasi-card{ background:var(--white); border:1px solid var(--line); border-radius: var(--radius); padding:28px; box-shadow: var(--shadow); }
+  .lokasi-row{ display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--line); }
+  .lokasi-row:last-of-type{ border-bottom:none; }
+  .lokasi-row svg{ width:20px; height:20px; color:var(--maroon); flex:none; margin-top:2px; }
+  .lokasi-row h4{ font-size:0.95rem; font-weight:600; font-family:'Inter',sans-serif; }
+  .lokasi-row p{ margin-top:3px; font-size:0.9rem; color:var(--charcoal-soft); }
+  @media (max-width: 820px){ .lokasi-wrap{ grid-template-columns:1fr; } }
+
+  /* ---------- Footer ---------- */
+  .footer{ background: var(--charcoal); color: rgba(250,246,240,0.75); padding: 56px 0 26px; }
+  .footer-grid{ display:grid; grid-template-columns: 1.3fr 1fr 1fr; gap:36px; }
+  .footer-brand{ display:flex; align-items:center; gap:10px; color:#fff; font-family:'Fraunces',serif; font-size:1.1rem; font-weight:600; }
+  .footer-desc{ margin-top:14px; font-size:0.9rem; max-width: 34ch; color: rgba(250,246,240,0.55); }
+  .footer h4{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color: var(--gold-soft); margin-bottom:16px; font-weight:500; }
+  .footer-list{ display:flex; flex-direction:column; gap:11px; font-size:0.9rem; }
+  .footer-bottom{ margin-top:44px; padding-top:22px; border-top:1px solid rgba(250,246,240,0.12); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.8rem; color: rgba(250,246,240,0.45); }
+  @media (max-width: 780px){ .footer-grid{ grid-template-columns:1fr 1fr; } .footer-grid > div:first-child{ grid-column:1/-1; } }
+  @media (max-width: 480px){ .footer-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Edit mode banner ---------- */
+  .edit-banner{
+    display:none; position:sticky; top:0; z-index:60; background: var(--maroon-dark); color:#fff;
+    padding:10px 20px; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; font-size:0.85rem;
+  }
+  body.edit-mode .edit-banner{ display:flex; }
+  .edit-banner strong{ font-weight:600; }
+  .edit-banner-actions{ display:flex; gap:10px; }
+  .edit-banner .btn{ padding:8px 16px; font-size:0.8rem; }
+
+  /* ---------- Floating action button ---------- */
+  .fab{
+    position: fixed; bottom:22px; right:22px; z-index:70; display:flex; align-items:center; gap:9px;
+    background: var(--maroon); color:#fff; padding:14px 20px; border-radius:999px; border:none;
+    box-shadow: 0 16px 34px -12px rgba(85,16,31,0.55); font-weight:600; font-size:0.88rem;
+  }
+  .fab svg{ width:17px; height:17px; }
+  body.edit-mode .fab{ background: var(--charcoal); }
+  .fab:hover{ transform: translateY(-2px); }
+
+  /* ---------- Toast ---------- */
+  .toast{
+    position:fixed; bottom:26px; left:50%; transform: translateX(-50%) translateY(20px); z-index:80;
+    background: var(--charcoal); color:#fff; padding:11px 22px; border-radius:999px; font-size:0.85rem;
+    opacity:0; pointer-events:none; transition: opacity .25s ease, transform .25s ease;
+  }
+  .toast.show{ opacity:1; transform: translateX(-50%) translateY(0); }
+
+  /* text field for contact settings */
+  .field{ margin-bottom:14px; }
+  .field label{ display:block; font-size:0.78rem; font-weight:600; color:var(--charcoal-soft); margin-bottom:6px; letter-spacing:0.02em; }
+  .field input{
+    width:100%; padding:11px 13px; border-radius:10px; border:1px solid var(--line); font-family:'Inter',sans-serif;
+    font-size:0.92rem; background: var(--white);
+  }
+  .field input:focus{ outline:2px solid var(--maroon); outline-offset:1px; }
+
+  .settings-panel{
+    display:none; background:var(--white); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px; margin-top:18px; box-shadow: var(--shadow);
+  }
+  body.edit-mode .settings-panel{ display:block; }
+  .settings-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 20px; }
+  @media (max-width:600px){ .settings-grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<div class="edit-banner">
+  <span>✎ <strong>Mode Edit Aktif</strong> — klik teks untuk mengubah, arahkan/ketuk foto untuk mengganti.</span>
+  <div class="edit-banner-actions">
+    <button class="btn btn-light btn-sm" id="btnResetContent">Reset ke Awal</button>
+    <button class="btn btn-primary btn-sm" id="btnDoneEdit" style="background:var(--gold);">Selesai</button>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="nav-row">
+    <div class="brand">
+      <span class="brand-mark">A</span>
+      <span>ADIRA FINANCE<small>Cabang Sidoarjo</small></span>
+    </div>
+    <div class="nav-links">
+      <a href="#produk">Produk</a>
+      <a href="#keunggulan">Keunggulan</a>
+      <a href="#tim">Tim Kami</a>
+      <a href="#lokasi">Lokasi</a>
+    </div>
+    <div class="nav-right">
+      <a class="btn btn-primary btn-sm wa-link" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-1.3-.6-2.1-1.1-3-2.6-.2-.4.2-.3.5-1 .1-.2 0-.4 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg><span>Hubungi Kami</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Buka menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="#produk">Produk</a>
+    <a href="#keunggulan">Keunggulan</a>
+    <a href="#tim">Tim Kami</a>
+    <a href="#lokasi">Lokasi</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow" id="hero-eyebrow" data-editable="true">KANTOR CABANG SIDOARJO</span>
+      <h1 class="hero-title" id="hero-title" data-editable="true">Pembiayaan Kendaraan yang Amanah &amp; Terpercaya</h1>
+      <p class="hero-sub" id="hero-sub" data-editable="true">ADIRA FINANCE Sidoarjo melayani pembiayaan mobil dan sepeda motor dengan proses cepat, transparan, dan tanpa potongan tersembunyi — didukung tim yang siap membantu kebutuhan Anda.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary wa-link" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-1.3-.6-2.1-1.1-3-2.6-.2-.4.2-.3.5-1 .1-.2 0-.4 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>Hubungi via WhatsApp</a>
+        <a class="btn btn-ghost" href="#produk">Lihat Produk Kami</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>2</b><span>Kategori Produk</span></div>
+        <div class="hero-stat"><b>6+</b><span>Tim Sales Berpengalaman</span></div>
+        <div class="hero-stat"><b>0%</b><span>Potongan Tersembunyi</span></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <span class="hero-ribbon">RESMI &amp; TERDAFTAR</span>
+      <div class="ph-wrap" id="ph-hero"></div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="sambutan">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Kata Sambutan</span>
+      <h2 class="section-title">Sambutan Pimpinan Cabang</h2>
+      <p class="section-desc">Sepatah kata dari tim manajemen ADIRA FINANCE Sidoarjo untuk seluruh pelanggan dan mitra kami.</p>
+    </div>
+    <div class="sambutan-grid" id="sambutan-grid"></div>
+  </div>
+</section>
+
+<section class="section" id="produk" style="background:var(--ivory-deep);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Produk Kami</span>
+      <h2 class="section-title">Solusi Pembiayaan untuk Setiap Kebutuhan</h2>
+      <p class="section-desc">Dua kategori pembiayaan utama kami, dengan proses yang sama-sama mudah dan tenor yang fleksibel.</p>
+    </div>
+    <div class="produk-grid" id="produk-grid"></div>
+  </div>
+</section>
+
+<section class="section keunggulan-band" id="keunggulan">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Keunggulan</span>
+      <h2 class="section-title">Mengapa Memilih Kami</h2>
+      <p class="section-desc">Tiga alasan utama pelanggan mempercayakan pembiayaan kendaraannya kepada ADIRA FINANCE Sidoarjo.</p>
+    </div>
+    <div class="adv-grid" id="adv-grid"></div>
+  </div>
+</section>
+
+<section class="section" id="syarat">
+  <div class="container syarat-wrap">
+    <div>
+      <span class="eyebrow">Syarat &amp; Ketentuan</span>
+      <h2 class="section-title" style="margin-bottom:22px;">Dokumen yang Perlu Disiapkan</h2>
+      <div class="syarat-list" id="syarat-list"></div>
+      <p class="syarat-note">*Syarat dapat berubah sewaktu-waktu sesuai kebijakan perusahaan. Hubungi kami untuk informasi terbaru.</p>
+    </div>
+    <div class="syarat-aside">
+      <h3>Konsultasi Gratis Sebelum Mengajukan</h3>
+      <p>Tim kami siap membantu menghitung simulasi cicilan dan memilihkan tenor yang paling sesuai dengan kondisi keuangan Anda — tanpa biaya, tanpa kewajiban.</p>
+      <a class="btn btn-primary wa-link" href="#" target="_blank" rel="noopener">Konsultasi via WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tim" style="background:var(--ivory-deep);">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Tim Kami</span>
+      <h2 class="section-title">Tenaga Pemasaran ADIRA FINANCE Sidoarjo</h2>
+      <p class="section-desc">Hubungi langsung tim kami untuk konsultasi dan pengajuan pembiayaan kendaraan Anda.</p>
+    </div>
+    <div class="tim-grid" id="tim-grid"></div>
+  </div>
+</section>
+
+<section class="section" id="lokasi">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Temukan Kami</span>
+      <h2 class="section-title">Kunjungi Kantor Cabang Kami</h2>
+    </div>
+    <div class="lokasi-wrap">
+      <div class="map-frame">
+        <iframe id="mapFrame" src="https://www.google.com/maps?q=-7.454368,112.718029&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lokasi ADIRA FINANCE Sidoarjo"></iframe>
+      </div>
+      <div class="lokasi-card">
+        <div class="lokasi-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <div><h4>Alamat</h4><p id="lokasi-alamat" data-editable="true">Kantor Cabang ADIRA FINANCE Sidoarjo, Jawa Timur — klik untuk melengkapi alamat.</p></div>
+        </div>
+        <div class="lokasi-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <div>
+            <h4>Jam Operasional</h4>
+            <p><span id="lokasi-jam1" data-editable="true">Senin – Jumat: 08.00 – 17.00</span></p>
+            <p><span id="lokasi-jam2" data-editable="true">Sabtu: 08.00 – 13.00, Minggu &amp; Libur: Tutup</span></p>
+          </div>
+        </div>
+        <div class="lokasi-row">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg>
+          <div><h4>WhatsApp</h4><p id="lokasi-wa-display">0819-8995-181</p></div>
+        </div>
+        <a class="btn btn-primary wa-link" style="width:100%; margin-top:6px;" href="#" target="_blank" rel="noopener">Hubungi via WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="settings-panel">
+      <h3 style="font-size:1.05rem; margin-bottom:4px;">Pengaturan Kontak &amp; Peta</h3>
+      <p style="font-size:0.85rem; color:var(--charcoal-soft); margin-bottom:16px;">Perubahan di sini otomatis memperbarui semua tombol WhatsApp dan peta di halaman.</p>
+      <div class="settings-grid">
+        <div class="field">
+          <label for="inputWa">Nomor WhatsApp (format 62...)</label>
+          <input type="text" id="inputWa" placeholder="6281998995181">
+        </div>
+        <div class="field">
+          <label for="inputMap">Link Embed Google Maps</label>
+          <input type="text" id="inputMap" placeholder="https://www.google.com/maps?q=...&output=embed">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand"><span class="brand-mark">A</span> ADIRA FINANCE Sidoarjo</div>
+      <p class="footer-desc">Kantor cabang resmi ADIRA FINANCE yang melayani pembiayaan mobil dan sepeda motor di wilayah Sidoarjo dan sekitarnya.</p>
+    </div>
+    <div>
+      <h4>Tautan</h4>
+      <div class="footer-list">
+        <a href="#produk">Produk Kami</a>
+        <a href="#keunggulan">Keunggulan</a>
+        <a href="#tim">Tim Kami</a>
+        <a href="#lokasi">Lokasi</a>
+      </div>
+    </div>
+    <div>
+      <h4>Kontak</h4>
+      <div class="footer-list">
+        <a class="wa-link" href="#" target="_blank" rel="noopener">WhatsApp: <span id="footer-wa-display">0819-8995-181</span></a>
+        <span id="footer-alamat" data-editable="true">Sidoarjo, Jawa Timur</span>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year"></span> ADIRA FINANCE Sidoarjo. Seluruh hak dilindungi.</span>
+    <span>Dibuat ulang secara elegan &amp; responsif.</span>
+  </div>
+</footer>
+
+<button class="fab" id="editFab">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+  <span id="fabLabel">Edit Halaman</span>
+</button>
+
+<div class="toast" id="toast"></div>
+<input type="file" accept="image/*" id="fileInput" style="display:none;">
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------------------------------------------------------
+   ICONS
+--------------------------------------------------------- */
+const ICON_CAMERA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13.5" r="3.3"/></svg>';
+const ICON_CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>';
+const ICON_EASY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 3 14h7l-1 8 11-14h-7l1-6z"/></svg>';
+const ICON_COIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 12h6M12 9v6"/></svg>';
+const ICON_SHIELD = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-3z"/></svg>';
+const ICON_PLUS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>';
+const ICON_CLOSE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6 6 18"/></svg>';
+const ICON_WA = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-1.3-.6-2.1-1.1-3-2.6-.2-.4.2-.3.5-1 .1-.2 0-.4 0-.5l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>';
+
+const PLACEHOLDER_AVATAR = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="460"><rect width="400" height="460" fill="#F1E7DA"/><circle cx="200" cy="175" r="72" fill="#D9C6A5"/><ellipse cx="200" cy="400" rx="150" ry="120" fill="#D9C6A5"/></svg>'
+);
+
+/* ---------------------------------------------------------
+   DEFAULT CONTENT
+--------------------------------------------------------- */
+const defaultContent = () => ({
+  hero: {
+    eyebrow: "KANTOR CABANG SIDOARJO",
+    title: "Pembiayaan Kendaraan yang Amanah &amp; Terpercaya",
+    sub: "ADIRA FINANCE Sidoarjo melayani pembiayaan mobil dan sepeda motor dengan proses cepat, transparan, dan tanpa potongan tersembunyi — didukung tim yang siap membantu kebutuhan Anda.",
+    photo: "https://lh3.googleusercontent.com/sitesv/AG8ngQW42u2rr2npKQONe01u1ahq3iYzZwL3n2k_2zryjkfBdOOVi_TWjaGCCDtRfGLHGwgpcfXs2-HU9F9qUeSqynxhUjomEa2_KEx0VstPoADBV60ub-rbq5gy4Ek788puhjWaBlzX53_pbhYqjGyoiyTB98Kht-Rp65V1S4yQtkH3XPEH-ghJ2NHEGytd6J6YzyyZDaPIf1EDj-lxHL9lTQVqqURVqbBzvf4mPK2B=w1280"
+  },
+  sambutan: [
+    {
+      label: "Sambutan Kepala Cabang",
+      name: "Kepala Cabang",
+      role: "ADIRA FINANCE Sidoarjo",
+      text: "Assalamu'alaikum Warahmatullahi Wabarakatuh, salam sejahtera bagi kita semua.\n\nPuji syukur kami panjatkan atas rahmat-Nya, sehingga website resmi ADIRA FINANCE Sidoarjo dapat hadir untuk memudahkan Anda mengenal produk dan layanan kami secara cepat, transparan, dan mudah diakses.\n\nSebagai bagian dari keluarga besar ADIRA FINANCE, kami senantiasa berupaya memberikan pelayanan terbaik, profesional, dan solutif. Terima kasih atas kepercayaan yang telah diberikan selama ini.",
+      photo: "https://lh3.googleusercontent.com/sitesv/AG8ngQX_G5fWfQJuaHD85oJDgt7C1gEh8V4lEEtIFGfJm2_Tsp57mPxxL0vISiago9IaKbV2_kH00vXz_gbqxtKQo7-POQPaGLUlNyyPL7WBTr3xVtIdq_POU3SLyB5Lpn-GmTfMHxgh4FQHbpf5tu8Ya_BB-dv94i_5Pr18EoeYmoiQy4sliw7Dem1-yXxw51Sp75CcFg7mad7ltPySHN7joDR9pv_Abb7JkhvmajHl=w1280"
+    },
+    {
+      label: "Sambutan Supervisor",
+      name: "Supervisor",
+      role: "ADIRA FINANCE Sidoarjo",
+      text: "Assalamu'alaikum Warahmatullahi Wabarakatuh.\n\nSelamat datang di halaman resmi kantor cabang ADIRA FINANCE Sidoarjo. Kami memastikan setiap kebutuhan pembiayaan Anda — mulai dari konsultasi, pengajuan, hingga pencairan — berjalan mudah dan nyaman.\n\nTim marketing kami yang berpengalaman siap mendampingi Anda memilih solusi pembiayaan yang paling sesuai. Kepercayaan Anda adalah motivasi terbesar bagi kami untuk terus berkembang.",
+      photo: "https://lh3.googleusercontent.com/sitesv/AG8ngQW42u2rr2npKQONe01u1ahq3iYzZwL3n2k_2zryjkfBdOOVi_TWjaGCCDtRfGLHGwgpcfXs2-HU9F9qUeSqynxhUjomEa2_KEx0VstPoADBV60ub-rbq5gy4Ek788puhjWaBlzX53_pbhYqjGyoiyTB98Kht-Rp65V1S4yQtkH3XPEH-ghJ2NHEGytd6J6YzyyZDaPIf1EDj-lxHL9lTQVqqURVqbBzvf4mPK2B=w1280"
+    }
+  ],
+  produk: [
+    { title: "Mobil Passenger", desc: "Pembiayaan mobil baru maupun bekas untuk kebutuhan keluarga dan bisnis, dengan pilihan tenor fleksibel dan proses persetujuan yang cepat.", photo: "https://lh3.googleusercontent.com/sitesv/AG8ngQWZf1pFJPPpmRXDAvSUfHaZpFQwUaaVCfWGboV4pe0wmDBpb9c43RMw3z3U8o3NveNWu07lDl0XZiX_CZIGfvaBnM5ajpO8XEB0hmeIRb5It_ecBRCen0ynooYTz32WNGiA5OjAslVYK-38Dk4U5xYHdZCuGrsCsxNoieMXLpei771vp-yqKO_D0J8TYl0SgVOcd-ZRV0nqsc9MWTuYpIu53NyW4ExYTyZKaG8IlwQ=w1280" },
+    { title: "Sepeda Motor", desc: "Pembiayaan sepeda motor baru dan bekas dari berbagai merek, dengan uang muka ringan dan cicilan yang bersahabat.", photo: "https://lh3.googleusercontent.com/sitesv/AG8ngQX6vhmjHhI0UBmwgmeWNOd02cV-WPHTsE9BPc5e6vgL4SNGPljUoF0xDRnu2ZQjLtSOhKdSV6xTZSz14r6t2OPp1JLN0APUtjCg0neXNFRuy1hTI3FXbRLXabLZfekOG8EEZTDelemrGfssOih3XNQ6A1Ak36GMTv0izX8QFhFCPOOjIO0VltVav9ULwPFNepQTpLwTIGqoWsJSXBnDmvIkXyeDQKxvuXvC1-aImw8=w1280" }
+  ],
+  advantages: [
+    { title: "Proses Mudah", desc: "Pengajuan cepat dengan syarat sederhana, dari konsultasi hingga persetujuan.", icon: ICON_EASY },
+    { title: "Limit Pencairan Dana Tinggi", desc: "Plafon pembiayaan kompetitif yang disesuaikan dengan kebutuhan dan profil Anda.", icon: ICON_COIN },
+    { title: "Pencairan Tanpa Potongan", desc: "Dana cair sesuai kesepakatan, transparan tanpa biaya tersembunyi.", icon: ICON_SHIELD }
+  ],
+  terms: [
+    "Kartu Tanda Penduduk (KTP) suami/istri yang masih berlaku",
+    "Kartu Keluarga (KK)",
+    "Dokumen kendaraan (BPKB) atau bukti kepemilikan",
+    "Slip gaji atau bukti penghasilan lainnya"
+  ],
+  team: [
+    { name: "Supra", role: "Sales Marketing Officer", photo: "https://lh3.googleusercontent.com/sitesv/AG8ngQWYEe_XhS2IAYYiG2Pr1K8puQKDRBeyTYM9C4ufS2uou5AIG94m2VldqlbfwMsWkKKX0zGEyzLiQjmQrHYv8Lo8WQmIWA3eClZH1Fflmv05EiR5qT4vIjHWQqT3s-Cc8SbwVocjK9DMZnOJKY6CGOd79t4UkSs2XyIItljumJ9ZTi2ThMv6yAR-PgfBOOYVUOMTRIPfrQKQ0jqEZ6kE7RWs1S0dsixhEkUs2eN5qqM=w1280" },
+    { name: "Bharata", role: "Sales Marketing Officer", photo: "https://lh3.googleusercontent.com/sitesv/AG8ngQVPa4QUZifDGl1Ed68r9IBLqrTQv76pBRC9590CXw67CK5D8tmnAYWPDc6pw79_77P9AGdlz2-tF86xayrPAcgIIg5VN37tXnXrZqsFRwUpGXWjKBmw3IEQY7FMAtMq2vGFqzdydGilIvBSwv2nbG-4pr_XEbUBgsJqc_lG65pt_LppHG0okPC-2J5Ou_xAdBdjkYQE0gGGYjkpPXDFcTdvyUgTZggBKJSLCu1zlSw=w1280" },
+    { name: "Graha", role: "Sales Marketing Officer", photo: "https://lh3.googleusercontent.com/sitesv/AG8ngQV8LDisVd2TbWmoGenuH9WjS7pzwTdhjSPTVhjEDG6s5dPLgSBwW8Fslo6ziMie6h98G2I-mhwyLC0S1nAlG0nwUQ6weQTKO0cd5QF-sLuBxJXNyI5AE4igG-MPkeGtp6ZsF4ATV98wCkTuq4x11Ksd0aFa2K9QbZIIFofRs8mhaOHEr0k8w7cfzxG3WA3Wp9t_hlpgqMSG7L_d8FzqSb35bBtIDJO-9JsaNNK-6eU=w1280" },
+    { name: "Iman", role: "Sales Marketing Officer", photo: "https://lh3.googleusercontent.com/sitesv/AG8ngQVPa4QUZifDGl1Ed68r9IBLqrTQv76pBRC9590CXw67CK5D8tmnAYWPDc6pw79_77P9AGdlz2-tF86xayrPAcgIIg5VN37tXnXrZqsFRwUpGXWjKBmw3IEQY7FMAtMq2vGFqzdydGilIvBSwv2nbG-4pr_XEbUBgsJqc_lG65pt_LppHG0okPC-2J5Ou_xAdBdjkYQE0gGGYjkpPXDFcTdvyUgTZggBKJSLCu1zlSw=w1280" },
+    { name: "Andini", role: "Sales Marketing Officer", photo: "https://lh3.googleusercontent.com/sitesv/AG8ngQVPa4QUZifDGl1Ed68r9IBLqrTQv76pBRC9590CXw67CK5D8tmnAYWPDc6pw79_77P9AGdlz2-tF86xayrPAcgIIg5VN37tXnXrZqsFRwUpGXWjKBmw3IEQY7FMAtMq2vGFqzdydGilIvBSwv2nbG-4pr_XEbUBgsJqc_lG65pt_LppHG0okPC-2J5Ou_xAdBdjkYQE0gGGYjkpPXDFcTdvyUgTZggBKJSLCu1zlSw=w1280" },
+    { name: "Rendi", role: "Sales Marketing Officer", photo: "https://lh3.googleusercontent.com/sitesv/AG8ngQVPa4QUZifDGl1Ed68r9IBLqrTQv76pBRC9590CXw67CK5D8tmnAYWPDc6pw79_77P9AGdlz2-tF86xayrPAcgIIg5VN37tXnXrZqsFRwUpGXWjKBmw3IEQY7FMAtMq2vGFqzdydGilIvBSwv2nbG-4pr_XEbUBgsJqc_lG65pt_LppHG0okPC-2J5Ou_xAdBdjkYQE0gGGYjkpPXDFcTdvyUgTZggBKJSLCu1zlSw=w1280" }
+  ],
+  contact: {
+    wa: "6281998995181",
+    address: "Kantor Cabang ADIRA FINANCE Sidoarjo, Jawa Timur — klik untuk melengkapi alamat.",
+    footerAddress: "Sidoarjo, Jawa Timur",
+    jam1: "Senin – Jumat: 08.00 – 17.00",
+    jam2: "Sabtu: 08.00 – 13.00, Minggu &amp; Libur: Tutup",
+    mapUrl: "https://www.google.com/maps?q=-7.454368,112.718029&z=16&output=embed"
+  }
+});
+
+let content = null;
+let editMode = false;
+const waLinkEls = [];
+
+/* ---------------------------------------------------------
+   STORAGE
+--------------------------------------------------------- */
+const STORAGE_KEY = 'adiwangsa-site-content-v1';
+let saveTimer = null;
+let storageAvailable = true;
+
+async function loadContent(){
+  try{
+    const res = await window.storage.get(STORAGE_KEY, false);
+    if(res && res.value) return JSON.parse(res.value);
+  }catch(e){ /* no saved content yet, or storage unavailable */ }
+  return null;
+}
+function scheduleSave(){
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveNow, 700);
+}
+async function saveNow(){
+  try{
+    await window.storage.set(STORAGE_KEY, JSON.stringify(content), false);
+    showToast('Perubahan tersimpan');
+  }catch(e){
+    storageAvailable = false;
+    showToast('Perubahan tersimpan sementara di sesi ini');
+  }
+}
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(()=> t.classList.remove('show'), 1800);
+}
+
+/* ---------------------------------------------------------
+   HELPERS: editable text & photo builders
+--------------------------------------------------------- */
+function handlePaste(e){
+  e.preventDefault();
+  const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+  document.execCommand('insertText', false, text);
+}
+
+function makeEditableExisting(el, onChange){
+  el.dataset.editable = "true";
+  el.addEventListener('input', ()=>{ onChange(el.textContent); scheduleSave(); });
+  el.addEventListener('paste', handlePaste);
+}
+
+function editableEl(tag, value, onChange, className){
+  const el = document.createElement(tag);
+  if(className) el.className = className;
+  el.textContent = value;
+  el.dataset.editable = "true";
+  el.addEventListener('input', ()=>{ onChange(el.textContent); scheduleSave(); });
+  el.addEventListener('paste', handlePaste);
+  return el;
+}
+
+function pickImage(callback){
+  const input = document.getElementById('fileInput');
+  input.value = '';
+  input.onchange = () => {
+    const file = input.files && input.files[0];
+    if(!file) return;
+    compressImage(file).then(callback).catch(()=> showToast('Gagal memuat foto'));
+  };
+  input.click();
+}
+
+function compressImage(file, maxW=1000, quality=0.84){
+  return new Promise((resolve, reject)=>{
+    const reader = new FileReader();
+    reader.onload = (e)=>{
+      const img = new Image();
+      img.onload = ()=>{
+        const scale = Math.min(1, maxW / img.width);
+        const w = Math.round(img.width * scale);
+        const h = Math.round(img.height * scale);
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = reject;
+      img.src = e.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function editableImg(src, alt, onChange, extraClass){
+  const wrap = document.createElement('div');
+  wrap.className = 'ph-wrap' + (extraClass ? ' ' + extraClass : '');
+  const img = document.createElement('img');
+  img.src = src; img.alt = alt; img.loading = 'lazy';
+  const overlay = document.createElement('button');
+  overlay.type = 'button';
+  overlay.className = 'ph-edit-btn';
+  overlay.innerHTML = ICON_CAMERA + '<span>Ganti Foto</span>';
+  overlay.addEventListener('click', (e)=>{
+    e.preventDefault(); e.stopPropagation();
+    pickImage((dataUrl)=>{ img.src = dataUrl; onChange(dataUrl); scheduleSave(); showToast('Foto diperbarui'); });
+  });
+  wrap.append(img, overlay);
+  return wrap;
+}
+
+function waHref(prefill){
+  const digits = (content.contact.wa || '').replace(/\D/g, '');
+  return 'https://wa.me/' + digits + (prefill ? '?text=' + encodeURIComponent(prefill) : '');
+}
+function updateWaLinks(){
+  waLinkEls.forEach(el => el.href = waHref(el.dataset.prefill || ''));
+  document.getElementById('lokasi-wa-display').textContent = formatPhone(content.contact.wa);
+  document.getElementById('footer-wa-display').textContent = formatPhone(content.contact.wa);
+}
+function formatPhone(num){
+  const d = (num || '').replace(/\D/g,'');
+  if(d.length < 8) return num;
+  return '+' + d.slice(0,2) + ' ' + d.slice(2,5) + '-' + d.slice(5,9) + '-' + d.slice(9);
+}
+
+/* ---------------------------------------------------------
+   RENDER
+--------------------------------------------------------- */
+function render(){
+  /* HERO */
+  document.getElementById('ph-hero').replaceWith(
+    Object.assign(editableImg(content.hero.photo, 'Sambutan Kepala Cabang', (v)=> content.hero.photo = v), {id:'ph-hero'})
+  );
+  makeEditableExisting(document.getElementById('hero-eyebrow'), v => content.hero.eyebrow = v);
+  document.getElementById('hero-eyebrow').textContent = content.hero.eyebrow;
+  makeEditableExisting(document.getElementById('hero-title'), v => content.hero.title = v);
+  document.getElementById('hero-title').textContent = content.hero.title.replace(/&amp;/g,'&');
+  makeEditableExisting(document.getElementById('hero-sub'), v => content.hero.sub = v);
+  document.getElementById('hero-sub').textContent = content.hero.sub;
+
+  /* SAMBUTAN */
+  const sGrid = document.getElementById('sambutan-grid');
+  sGrid.innerHTML = '';
+  content.sambutan.forEach((s, i) => {
+    const card = document.createElement('div');
+    card.className = 'amanah-card sambutan-card';
+    const ph = editableImg(s.photo, s.name, v => s.photo = v);
+    const body = document.createElement('div');
+    body.style.flex = '1';
+
+    const lbl = editableEl('div', s.label, v => s.label = v, 'sambutan-role');
+    const name = editableEl('div', s.name, v => s.name = v, 'sambutan-name');
+    const quote = editableEl('p', s.text, v => s.text = v, 'sambutan-quote');
+
+    body.append(name, lbl, quote);
+    card.append(ph, body);
+    sGrid.appendChild(card);
+  });
+
+  /* PRODUK */
+  const pGrid = document.getElementById('produk-grid');
+  pGrid.innerHTML = '';
+  content.produk.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'produk-card';
+    const ph = editableImg(p.photo, p.title, v => p.photo = v);
+    const body = document.createElement('div');
+    body.className = 'produk-body';
+    const h = editableEl('h3', p.title, v => p.title = v);
+    const d = editableEl('p', p.desc, v => p.desc = v);
+    body.append(h, d);
+    card.append(ph, body);
+    pGrid.appendChild(card);
+  });
+
+  /* ADVANTAGES */
+  const aGrid = document.getElementById('adv-grid');
+  aGrid.innerHTML = '';
+  content.advantages.forEach(a => {
+    const card = document.createElement('div');
+    card.className = 'adv-card';
+    const icon = document.createElement('div');
+    icon.className = 'adv-icon';
+    icon.innerHTML = a.icon;
+    const h = editableEl('h3', a.title, v => a.title = v);
+    const d = editableEl('p', a.desc, v => a.desc = v);
+    card.append(icon, h, d);
+    aGrid.appendChild(card);
+  });
+
+  /* TERMS */
+  const tList = document.getElementById('syarat-list');
+  tList.innerHTML = '';
+  content.terms.forEach((term, idx) => {
+    const row = document.createElement('div');
+    row.className = 'syarat-item';
+    row.innerHTML = ICON_CHECK;
+    const span = editableEl('span', term, v => content.terms[idx] = v);
+    row.appendChild(span);
+    tList.appendChild(row);
+  });
+
+  /* TEAM */
+  renderTeam();
+
+  /* LOKASI */
+  makeEditableExisting(document.getElementById('lokasi-alamat'), v => content.contact.address = v);
+  document.getElementById('lokasi-alamat').textContent = content.contact.address;
+  makeEditableExisting(document.getElementById('lokasi-jam1'), v => content.contact.jam1 = v);
+  document.getElementById('lokasi-jam1').textContent = content.contact.jam1;
+  makeEditableExisting(document.getElementById('lokasi-jam2'), v => content.contact.jam2 = v);
+  document.getElementById('lokasi-jam2').textContent = content.contact.jam2.replace(/&amp;/g,'&');
+  document.getElementById('mapFrame').src = content.contact.mapUrl;
+
+  makeEditableExisting(document.getElementById('footer-alamat'), v => content.contact.footerAddress = v);
+  document.getElementById('footer-alamat').textContent = content.contact.footerAddress;
+
+  /* settings inputs */
+  document.getElementById('inputWa').value = content.contact.wa;
+  document.getElementById('inputMap').value = content.contact.mapUrl;
+
+  /* WA links collection */
+  waLinkEls.length = 0;
+  document.querySelectorAll('.wa-link').forEach(el => waLinkEls.push(el));
+  updateWaLinks();
+
+  applyEditMode();
+  setupReveal();
+}
+
+function renderTeam(){
+  const grid = document.getElementById('tim-grid');
+  grid.innerHTML = '';
+  content.team.forEach((m, idx) => {
+    const card = document.createElement('div');
+    card.className = 'tim-card amanah-card';
+    card.style.position = 'relative';
+
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'tim-remove';
+    removeBtn.type = 'button';
+    removeBtn.innerHTML = ICON_CLOSE;
+    removeBtn.title = 'Hapus anggota';
+    removeBtn.addEventListener('click', ()=>{
+      if(content.team.length <= 1){ showToast('Minimal harus ada 1 anggota tim'); return; }
+      content.team.splice(idx, 1);
+      renderTeam();
+      scheduleSave();
+    });
+
+    const ph = editableImg(m.photo, m.name, v => m.photo = v);
+    const body = document.createElement('div');
+    body.className = 'tim-card-body';
+    const name = editableEl('div', m.name, v => m.name = v, 'tim-name');
+    const role = editableEl('div', m.role, v => m.role = v, 'tim-role');
+
+    const waBtn = document.createElement('a');
+    waBtn.className = 'btn btn-primary btn-sm wa-link';
+    waBtn.target = '_blank'; waBtn.rel = 'noopener'; waBtn.href = '#';
+    waBtn.dataset.prefill = 'Halo, saya ingin bertanya tentang pembiayaan kendaraan.';
+    waBtn.innerHTML = ICON_WA + '<span>Hubungi Saya</span>';
+
+    body.append(name, role, waBtn);
+    card.append(removeBtn, ph, body);
+    grid.appendChild(card);
+  });
+
+  const addCard = document.createElement('button');
+  addCard.type = 'button';
+  addCard.className = 'tim-add';
+  addCard.innerHTML = ICON_PLUS + '<span>Tambah Anggota</span>';
+  addCard.addEventListener('click', ()=>{
+    content.team.push({ name: 'Nama Anggota', role: 'Sales Marketing Officer', photo: PLACEHOLDER_AVATAR });
+    renderTeam();
+    scheduleSave();
+  });
+  grid.appendChild(addCard);
+
+  waLinkEls.length = 0;
+  document.querySelectorAll('.wa-link').forEach(el => waLinkEls.push(el));
+  if(content) updateWaLinks();
+}
+
+/* ---------------------------------------------------------
+   EDIT MODE
+--------------------------------------------------------- */
+function applyEditMode(){
+  document.querySelectorAll('[data-editable="true"]').forEach(el=>{
+    el.contentEditable = editMode ? 'true' : 'false';
+  });
+}
+function setEditMode(on){
+  editMode = on;
+  document.body.classList.toggle('edit-mode', editMode);
+  document.getElementById('fabLabel').textContent = editMode ? 'Selesai Mengedit' : 'Edit Halaman';
+  applyEditMode();
+}
+
+document.getElementById('editFab').addEventListener('click', ()=> setEditMode(!editMode));
+document.getElementById('btnDoneEdit').addEventListener('click', ()=> setEditMode(false));
+document.getElementById('btnResetContent').addEventListener('click', ()=>{
+  if(confirm('Kembalikan seluruh teks dan foto ke tampilan awal? Perubahan yang sudah disimpan akan hilang.')){
+    content = defaultContent();
+    render();
+    scheduleSave();
+    showToast('Halaman direset ke tampilan awal');
+  }
+});
+
+document.getElementById('inputWa').addEventListener('input', (e)=>{
+  content.contact.wa = e.target.value;
+  updateWaLinks();
+  scheduleSave();
+});
+document.getElementById('inputMap').addEventListener('input', (e)=>{
+  content.contact.mapUrl = e.target.value;
+  document.getElementById('mapFrame').src = content.contact.mapUrl;
+  scheduleSave();
+});
+
+/* ---------------------------------------------------------
+   NAV MOBILE
+--------------------------------------------------------- */
+document.getElementById('navToggle').addEventListener('click', ()=>{
+  document.getElementById('navMobile').classList.toggle('open');
+});
+document.querySelectorAll('#navMobile a').forEach(a=>{
+  a.addEventListener('click', ()=> document.getElementById('navMobile').classList.remove('open'));
+});
+
+/* ---------------------------------------------------------
+   REVEAL ON SCROLL
+--------------------------------------------------------- */
+function setupReveal(){
+  const targets = document.querySelectorAll('.section-head, .amanah-card, .produk-card, .adv-card, .syarat-item, .tim-card, .lokasi-card, .map-frame');
+  targets.forEach(t => t.classList.add('reveal'));
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){ en.target.classList.add('is-visible'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12 });
+  targets.forEach(t => io.observe(t));
+}
+
+/* ---------------------------------------------------------
+   INIT
+--------------------------------------------------------- */
+(async function init(){
+  const saved = await loadContent();
+  content = saved || defaultContent();
+  render();
+})();
+</script>
+</body>
+</html>
